@@ -14,19 +14,12 @@ module.exports = {
   },
   plugins: [
     // {
-    //   resolve: `gatsby-plugin-google-gtag`,
+    //   resolve: `gatsby-plugin-google-analytics`,
     //   options: {
-    //     // You can add multiple tracking ids and a pageview event will be fired for all of them.
-    //     trackingIds: [
-    //       "Google Analytics ID", // Google Analytics / GA
-    //     ],
-    //     // This object is used for configuration specific to this plugin
-    //     pluginConfig: {
-    //       // Puts tracking script in the head instead of the body
-    //       head: true,
-    //       // Setting this parameter is also optional
-    //       respectDNT: true,
-    //     },
+    //     // trackingId: "UA-190135241-1",
+    //     // this option places the tracking script into the head of the DOM
+    //     head: true,
+    //     // other options
     //   },
     // },
     `gatsby-plugin-preact`,
@@ -35,6 +28,41 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    // {
+    //   resolve: "gatsby-source-storyblok",
+    //   options: {
+    //     accessToken: "yDEAzTrksUHqy4Ks3rrQOAtt",
+    //     version: "draft",
+    //     languages: ["de", "at"], // Optional parameter. Omission will retrieve all languages by default.
+    //     homeSlug: "home",
+    //     version: process.env.NODE_ENV === "production" ? "published" : "draft",
+    //   },
+    // },
+    // {
+    //   resolve: "gatsby-source-graphql",
+    //   options: {
+    //     typeName: "WPGraphQL",
+    //     fieldName: "wpgraphql",
+    //     url: `http://kissaneassociates.local/graphql`,
+    //   },
+    // },
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        url: `http://kissaneassociates.local/graphql`,
+        // includedRoutes: [
+        //   "**/categories",
+        //   "**/posts",
+        //   "**/pages",
+        //   "**/media",
+        //   "**/tags",
+        //   "**/taxonomies",
+        //   "**/users",
+        //   "**/*/*/menus",
+        //   "**/*/*/menu-locations",
+        // ],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -42,33 +70,16 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-webfonts`,
-    //   options: {
-    //     fonts: {
-    //       google: [
-    //         {
-    //           family: "Raleway",
-    //           variants: ["400", "500", "700", "900"],
-    //         },
-    //         {
-    //           family: "Poppins",
-    //           variants: ["400", "500", "700", "900"],
-    //         },
-    //         { family: "Josefin Sans" },
-    //       ],
-    //     },
-    //   },
-    // },
-    // {
-    //   resolve: "gatsby-source-prismic",
-    //   options: {
-    //     repositoryName: process.env.PRISMIC_REPOSITORY_NAME,
-    //     accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-    //     schemas: {
-    //       benefits: require("./src/schemas/benefits.json"),
-    //     },
-    //   },
-    // },
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: [
+            "Roboto: 100, 200, 300, 400, 500, 600, 700,900",
+            "Poppins:  100, 200, 300, 400, 500, 600, 700,900",
+          ],
+        },
+      },
+    },
   ],
 }

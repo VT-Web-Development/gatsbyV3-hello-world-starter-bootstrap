@@ -1,14 +1,18 @@
 import React, { createContext, useState } from "react"
-// import sublinks from "../constants/links"
+import navLinks from "../constants/links"
 
 const GatsbyContext = createContext()
 
 // Provider, Consumer
 
 const GatsbyProvider = ({ children }) => {
-  //   const [links, setLinks] = useState(sublinks)
+  const [links, setLinks] = useState(navLinks)
 
-  return <GatsbyContext.Provider>{children}</GatsbyContext.Provider>
+  return (
+    <GatsbyContext.Provider value={{ links }}>
+      {children}
+    </GatsbyContext.Provider>
+  )
 }
 
 export { GatsbyContext, GatsbyProvider }
