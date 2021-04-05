@@ -11,7 +11,7 @@ Variables
 
 :root {
   /* dark shades of primary color*/
-  --clr-primary-1: hsl(21, 91%, 17%);
+  --clr-primary-1: #00526F;
   --clr-primary-2: hsl(21, 84%, 25%);
   --clr-primary-3: hsl(21, 81%, 29%);
   --clr-primary-4: hsl(21, 77%, 34%);
@@ -51,6 +51,9 @@ Variables
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   --max-width: 1170px;
   --fixed-width: 620px;
+
+/* TRANSITION */
+  --transition: all 0.3s linear;
 }
 /*
 =============== 
@@ -78,6 +81,11 @@ ul {
 a {
   text-decoration: none;
 }
+
+a:hover {
+  text-decoration: none;
+}
+
 img {
   width: 100%;
   display: block;
@@ -110,6 +118,7 @@ p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-3);
 }
+
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 3.5rem;

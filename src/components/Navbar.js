@@ -7,7 +7,7 @@ import { GatsbyContext } from "../context/context"
 import NavLink from "./NavLink"
 
 const Navigationbar = () => {
-  const { links } = useContext(GatsbyContext)
+  const { links, headerUpperLinks } = useContext(GatsbyContext)
 
   return (
     <>
@@ -30,20 +30,22 @@ const Navigationbar = () => {
         <div className="header-upper">
           <Container>
             <Row>
-              <Col>
-                <Media>
-                  <img
-                    width={64}
-                    height={64}
-                    className="mr-3"
-                    src="holder.js/64x64"
-                    alt="Generic placeholder"
-                  />
-                </Media>
-              </Col>
-              <Col sm>1 of 1</Col>
-              <Col sm>1 of 1</Col>
-              <Col sm>1 of 1</Col>
+              {headerUpperLinks.map((item, index) => {
+                return (
+                  <>
+                    <Col sm>
+                      <InfoBox>
+                        <div className="header-upper__icon">{item.icon}</div>
+
+                        <div className="header-upper__info">
+                          <p className="header-upper__title">{item.title}</p>
+                          <p>{item.info}</p>
+                        </div>
+                      </InfoBox>
+                    </Col>
+                  </>
+                )
+              })}
             </Row>
           </Container>
         </div>
@@ -72,6 +74,28 @@ const Navigationbar = () => {
 }
 
 const Wrapper = styled.div`
+  .header-top {
+    position: relative;
+    padding: 10px 0px;
+    color: #c9c9c9;
+    font-size: 1rem;
+
+    a {
+      color: var(--clr-grey-3);
+
+      :hover {
+        color: var(--clr-primary-1);
+        font-weight: 900;
+        transition: var(--transition);
+      }
+    }
+
+    span {
+      color: var(--clr-red-dark);
+      padding-left: 1rem;
+    }
+  }
+
   .header-lower {
     background: var(--clr-black);
     width: 100%;
@@ -86,13 +110,37 @@ const Wrapper = styled.div`
   }
 `
 
-const LinkUL = styled.ul`
-  display: flex;
-  justify-content: center;
-  margin: 0;
+const InfoBox = styled.div`
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 1rem;
+  position: relative;
+  padding: 25px 0;
+  background: var(--clr-white);
 
-  li {
-    position: static;
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+
+    .header-upper__info {
+      text-align: center;
+    }
+  }
+
+  .header-upper__title {
+    font-size: 1.5rem;
+  }
+
+  .header-upper__icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+  }
+
+  .header-upper__icon svg {
+    font-size: 3rem;
   }
 `
 

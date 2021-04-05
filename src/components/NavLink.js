@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
@@ -45,15 +45,16 @@ const DropdownContent = styled.div`
   position: absolute;
   top: 4.2rem;
   left: 8rem;
-  background-color: #f9f9f9;
+  background: #414757;
   min-width: 16rem;
   box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+  padding: 0.5rem;
   z-index: 1;
   width: 100%;
 
   a {
     float: none;
-    color: black;
+    color: var(--clr-white);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -87,6 +88,7 @@ const SidebarLink = styled(Link)`
 
 const SidebarLabel = styled.span`
   margin-left: 16px;
+  color: var(--clr-white);
 `
 
 const DropdownLink = styled(Link)`
@@ -98,8 +100,9 @@ const DropdownLink = styled(Link)`
   text-decoration: none;
   color: #f5f5f5;
   font-size: 18px;
+
   &:hover {
-    background: #632ce4;
+    background: #252831;
     cursor: pointer;
   }
 `
@@ -117,6 +120,11 @@ const SublinkLinks = styled.div`
     text-decoration: none;
     display: block;
     text-align: left;
+    border-bottom: 4px solid #632ce4;
+
+    &:last-child {
+      border-bottom: none;
+    }
 
     &:hover {
       color: #88add2;
